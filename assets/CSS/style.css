@@ -64,6 +64,7 @@ body{
 
 section{
   justify-content: center;
+  margin-bottom: 150px;
 }
 
 h2 {
@@ -97,12 +98,22 @@ h2 {
 
 #button{
   justify-content: center;
+  background-color: #c9e9f6 ;
   color: black;
-  font-size: 40px;
-  width: 150px;
-  height: 70px;
+  font-size: 30px;
+  width: 125px;
+  height: 55px;
   border-radius: 30px;
-  
+  border: #007ea7 solid 2px;
+  cursor: pointer;
+  margin-top: 70px;
+}
+
+#button:hover {
+transition: 1s;
+color:#c9e9f6;
+background-color: #007ea7;
+opacity: .8;
 }
 
   .container {
@@ -123,6 +134,7 @@ h2 {
 
 footer {
   background-color: #007ea7;
+  margin-bottom: -10px;
 }
 
 footer img{
@@ -139,4 +151,8 @@ h4 {
 #connect {
 text-align: center;
 color: #f1f1f1;
+}
+
+.hide {
+  display: none;
 }
