@@ -1,22 +1,4 @@
-//! Start of application
-
-// I want to set up the start but as an action to start the quiz
-
-// When the start button is pressed, I want the page to switch to the first question
-var QuestionTitle = document.querySelector('#question')
-var answerChoice = document.querySelectorAll('.answerChoice')
-var questionIndex = 0;
-var questionSpace = document.querySelector('#questionSpace')
-var Main = document.querySelector('#main')
-let time = document.querySelector("#time")
-let startTimer = document.querySelector("#button")
-let secondsLeft = 4;
-
-
-
-
-
-let questions = [
+var quizQuestions = [
   {
     question: 'What does JSON do?',
     choices: [
@@ -24,7 +6,7 @@ let questions = [
     'Can help turn code into string',
     'It makes a value the equivelent of null'
     ],
-    answer: 1
+    answer: 'Can help turn code into string'
   },
 
   {
@@ -34,7 +16,7 @@ let questions = [
       'The equivelent of an array.',
       'A value type, such as a string or number'
     ],
-    answer: 0
+    answer: 'A collection of properties.'
   },
 
   {
@@ -44,7 +26,7 @@ let questions = [
       'A fancy word for pseudocoding',
       'A mindset to write JavaScript'
     ],
-    answer: 0
+    answer: 'A function within an object'
   },
 
   {
@@ -54,7 +36,7 @@ let questions = [
       '&&',
       '!'
     ],
-    answer: 1
+    answer: '&&'
   },
 
   {
@@ -64,7 +46,7 @@ let questions = [
       'Takes a decimal and rounds it up to the nearest whole number.',
       'Generates a random number between 0 and 1'
     ],
-    answer: 2
+    answer: 'Generates a random number between 0 and 1'
   },
 
   {
@@ -74,7 +56,7 @@ let questions = [
       'Booleans',
       'Strings in objects'
     ],
-    answer: 0
+    answer: 'Functions'
   },
 
   {
@@ -84,7 +66,7 @@ let questions = [
       'var',
       'const'
     ],
-    answer: 2
+    answer: 'const'
   },
 
   {
@@ -94,7 +76,7 @@ let questions = [
       'Tries to equal two different values to same type',
       'Creates a shortcut to make a function'
     ],
-    answer: 0
+    answer: 'It makes sure that 2 values are equal and the same type'
   },
 
   {
@@ -104,7 +86,7 @@ let questions = [
       'Limits where a variable can exist',
       'Makes things that are far away look close.'
     ],
-    answer: 1
+    answer: 'Limits where a variable can exist'
   },
 
   {
@@ -114,7 +96,7 @@ let questions = [
       'Inserts the code into the web browsers console',
       'Consoles every log in the HTML'
     ],
-    answer: 1
+    answer: 'Inserts the code into the web browsers console'
   },
 
   {
@@ -124,93 +106,135 @@ let questions = [
       'Deletes information inside the local storage.',
       'Converts the JSON syntax back to JavaScript syntax'
     ],
-    answer: 2
-  },
-]
+    answer: 'Converts the JSON syntax back to JavaScript syntax'
+  }
+];
 
-let CorrectWrong = {
-correct: 0,
-wrong: 0
+//Variables
+var rules = document.getElementById("rules");
+var startBtn = document.getElementById("startBtn");
+var quiz = document.getElementById("quiz");
+var quizQuestion = document.getElementById("quizQuestion");
+var quizAnswers = document.getElementById("quizAnswers");
+var timer = document.getElementById("timer");
+var currentQuestionIndex = 0;
+var timeLeft = 75;
+var score = 0;
+var timerInterval;
+
+//Keeps the quizQuestion hidden before we start the game
+quiz.style.visibility = "hidden";
+
+startBtn.addEventListener('click', startQuiz);
+
+//Function which hides some blocks with text
+function startQuiz() {
+  startBtn.style.display = "none";
+  introduction.style.display = "none";
+  quiz.style.visibility = "visible";
+  timerInterval = setInterval(updateTimer, 1000);
+  showQuestion();
+  // showHighScore(); add a function later
 }
 
-
-
-// --- When the new page switches, a random question appears
-// --- When the new page switches, four answer choices appear
-
-
-// When the start button is pressed, I want a timer to start that goes on for one minute
-
-
-
-
-startTimer.addEventListener("click", function () {
-  let timeInterval = setInterval(function () {
-    secondsLeft--;
-    time.textContent = secondsLeft;
-
-    if (secondsLeft === 0) {
-      clearInterval(timeInterval)
-      time.textContent = ``;
-    }
-  }, 1100)
-showQuestion()
-Main.classList.add('hide');
-
-questionSpace.classList.remove('hide')
-})
-
-//! Quiz Gameplay
-
-// When an answer choice is chosen:
-// --- If wrong, I want text that informs it's wrong
-// --- If correct, I want text that informs it's correct
-
-// Once an answer choice is chosen, wrong or right, new random question appears
-
-// Once an answer choice is chosen, wrong or right, the answer is tallied.
-// ******** Repeat *********
-
-
-
-
-
-
-
-
-
-function showQuestion(){
-  // if questionindex is equal or greater to 11 I want
-  if (questionIndex >= 11){
-    console.log(`hi`)
-    return;
+//Function which shows the questions after we clicked the button
+function showQuestion() {
+  //Display questions
+  var quizState = quizQuestions[currentQuestionIndex];
+  quizQuestion.innerText= `${currentQuestionIndex + 1}. ${quizState.question}`;
+  quizAnswers.innerHTML= "";
+  //For loop chooses elements from the array
+  for (let i = 0; i < quizState.choices.length; i++) {
+    var createLi = document.createElement("li");
+    var option = document.createElement("button");
+    option.setAttribute("id", "answerBtn");
+    option.textContent = quizState.choices[i];
+    option.addEventListener("click", () => checkAnswer(i));
+    createLi.appendChild(option);
+    quizAnswers.appendChild(option);
   }
-  console.log(`here is question index: `, questionIndex)
-  QuestionTitle.textContent = questions[questionIndex].question
+}
 
-  answerChoice[0].textContent = questions[questionIndex].choices[0]
+// Function which checks whether the answer is correct or no
+function checkAnswer(answerIndex) {
+  var quizState = quizQuestions[currentQuestionIndex];
+  // Check if the selected choice matches the correct answer
+  if (quizState.choices[answerIndex] === quizState.answer) {
+    //Correct answer
+    score++;
+    console.log(score);
+    console.log("Clicked choice: ", quizState.choices[answerIndex]);
+    console.log("Correct answer: ", quizState.answer);
+  } else {
+    // Wrong answer
+    timeLeft -= 15;
+  }
+  // The question index is incremented after the answer check.
+  currentQuestionIndex++;
+  // Check if we've gone through all the questions
+  if (currentQuestionIndex < quizQuestions.length) {
+    showQuestion();
+  } else {
+    endQuiz();
+  }
+  // saveScore();
+}
 
-  answerChoice[1].textContent = questions[questionIndex].choices[1]
+//Timer
+function updateTimer() {
+  timeLeft--;
+  if (timeLeft <= 0) {
+      endQuiz();
+  }
+  timer.textContent = `Time: ${timeLeft} seconds`;
+}
 
-  answerChoice[2].textContent = questions[questionIndex].choices[2]
+// End quiz
+function endQuiz() {
+  clearInterval(timerInterval);
+  quiz.style.display = "none";
 
+  //Adding text after the quiz is finished
+  var message = document.createElement('h2');
+  var scoreNumber = document.createElement('h3');
+  message.textContent = "You've finished!";
+  scoreNumber.textContent = `Your final score is: ${score}0`;
+  quizField.appendChild(message);
+  quizField.appendChild(scoreNumber);
+
+  saveScore()
+}
+
+var highscore = [];
+
+function saveScore() {
+    //Initials field and submit button
+    var initials = document.createElement('input');
+    initials.placeholder = "Write your initials here";
+    initials.setAttribute("id", "initialsField");
+    quizField.appendChild(initials);
   
-}
+    var submitButton = document.createElement('button');
+    submitButton.setAttribute("id", "submitButton");
+    submitButton.innerText = "Submit";
+    quizField.appendChild(submitButton);
+    
+    //Event listener and a function to save highscore in a local storage
+    submitButton.addEventListener("click", function(event) {
+      event.preventDefault();
 
-questionSpace.addEventListener('click', function(event){
-  if (event.target.matches('button')){
-    questionIndex++;
-    showQuestion()
-  }
+      var scoreText = initials.value.trim();
 
-})
+      if (scoreText === "") {
+        return;
+      }
 
-function AddingUpScore(){
-  if (answerChoice === questions.answer) {
-    CorrectWrong.correct++;
-  } else if (!(answerChoice === questions.answer)) {
-    CorrectWrong.wrong++;
-  }
-    }
+      highscore.push(scoreText);
+      initials.value = ""
+      window.location.href="score.html";
 
-    console.log
+      saveScore();
+      renderHighscore();
+    })
+  //Unfinished, I couldn't make the local storage work
+};

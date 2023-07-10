@@ -1,57 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Let's Quiz!</title>
-  <link rel="stylesheet" href="./assets/CSS/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./assets/CSS/style.css">
+<title>Quiz Time!</title>
 </head>
 
-
-
-
-
 <body>
-  <header id="header">
+  <header class="header">
     <h1>It's Show Time!</h1>
-  
+      <h3><button><a href="score.html">View Highscores</a></button></h3>
+      
   </header>
 
   <nav>
-<a href="https://xjuanpablo.github.io/Tech-Port/" target="_blank">Home</a>
-  </nav>
+    <a href="https://xjuanpablo.github.io/Tech-Port/" target="_blank">Home</a>
+    <h3 id="timer">Time: <span id="countdown">75</span> seconds</h3>
+      </nav>
 
-  
-  <h3 id="time" style="text-align: right; font-size: 50px; padding-right: 25px;"></h3>
-
-  <section id="main">
-    <h2>Quiz Time!</h2>
-
-    <p id="opener">Hello there, and welcome to the show-down! Coding is challenging and sometimes information leaves the cranium. To save as much as that information, we're going to take a quiz! You'll have one minute to answer as many questions as possible! Get a question wrong and lose Time. </p>
+  <main> 
+    <section id="introduction">
+      
+      <h2>Quiz Time!</h2>
+      <p class="rules">Hello there, and welcome to the show-down! Coding is challenging and sometimes information leaves the cranium. To save as much as that information, we're going to take a quiz! You'll have one minute to answer as many questions as possible! Get a question wrong and lose Time.
+      </p>
+      <br>
     <br>
-    <br>
-    <p id="opener2">Get it?  Got it? Great, Good luck!</p>
+    <p class="rules">Get it?  Got it? Great, Good luck!</p>
+      <button id="startBtn">Start</button>
+    </section>
 
-
-
-
-
-    <div class="container">
-      <div class="center">
-        <button id="button">Start</button>
+    <section id="quizField">
+      <div id="quiz">
+        <div id="quizQuestion"></div>
+        <div id="quizAnswers"></div>
       </div>
-    </div>
-  </section>
-
-<section id="questionSpace" class="hide">
-<h3 id="question">Question Placeholder</h3>
-<button class="answerChoice">Choice 1</button>
-<button class="answerChoice">Choice 2</button>
-<button class="answerChoice">Choice 3</button>
-
-
-</section>
+    </section>
+  </main>
 
   <footer>
 
@@ -59,7 +45,7 @@
     <h4>Thanks for visiting! Hope to see you again 😊</h4>
    
 
-    <p id="connect">Need to connect?</p>
+    
 
   <a href="https://github.com/xJuanPablo" target="_blank"> 
     <img src="./assets/photos/Git.png" alt="GitHub Logo" id="git">
@@ -74,17 +60,6 @@
   </a>
 
   </footer>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
