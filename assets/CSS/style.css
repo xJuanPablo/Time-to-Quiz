@@ -1,11 +1,19 @@
-/*Universal*/
-
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-/*Header*/
+body {
+  background-color: #f1f1f1;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  background-image: linear-gradient(to bottom right, #003459, #c9e9f6 ) ;
+  width: 100%;
+  padding-top: 49px;
+  padding-bottom: 39px;
+}
 
 h1 {
   text-align: center;
@@ -17,17 +25,12 @@ h1 {
   font-size: 80px;
   color: aliceblue;
   text-shadow: -5px 3px black;
+  margin-bottom: -71px;
 }
 
-#header {
-  background-image: linear-gradient(to bottom right, #003459, #c9e9f6 ) ;
-  width: 100%;
-  padding-top: 49px;
-  padding-bottom: 39px;
+h2 {
+  font-size: 45px;
 }
-
-
-/* nav */
 
 nav {
   background-color: #007ea7;
@@ -53,50 +56,7 @@ nav a::after{
   transition: .7s;
 }
 
-
-/*Body*/
-
-body{ 
-  background-color: #f1f1f1;
-}
-
-/*Section*/
-
-section{
-  justify-content: center;
-  margin-bottom: 150px;
-}
-
-h2 {
-  text-align: center;
-  padding-top: 60px;
-  padding-bottom: 30px;
-  font-size: 40px;
-  word-spacing: 3px;
-  letter-spacing: 1px;
-}
-
-#opener{
-  text-align: center;
-  font-weight: 100;
-  font-size: 25px;
-  word-spacing: 2px;
-  letter-spacing: 1px;
-  line-height: 37px;
-  padding-bottom: 7px;
-  
-}
-
-#opener2{
-  text-align: center;
-  font-size: 35px;
-  word-spacing: 3px;
-  font-weight: 100;
-  font-style: italic;
-  padding-bottom: 17px;
-}
-
-#button{
+#startBtn {
   justify-content: center;
   background-color: #c9e9f6 ;
   color: black;
@@ -109,28 +69,142 @@ h2 {
   margin-top: 70px;
 }
 
-#button:hover {
-transition: 1s;
+#quizField {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+#quiz {
+  background-color: #c9e9f6;
+  padding: 50px;
+  border-radius: 25px;
+  min-width: 500px;
+  max-width: 500px;
+  border: rgb(175, 172, 172) solid 2px;
+}
+
+#quizQuestion{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 25px;
+}
+
+#quizAnswers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 35px;
+}
+
+#introduction {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 80px;
+}
+
+p {
+  font-size: 22px;
+  padding: 20px;
+  line-height: 2;
+  text-align: center;
+}
+
+#startBtn:hover, #answerBtn:hover, #submitButton:hover, #resetGame:hover, #resetScore:hover {
+  transition: 1s;
 color:#c9e9f6;
 background-color: #007ea7;
 opacity: .8;
 }
 
-  .container {
-    height: 100px;
-    position: relative;
-  }
-  
-  .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+button {
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  border-radius: 10px;
+  border-style: none;
+  width: 250px;
 }
 
-/*footer*/
+h2 {
+  font-size: 55px;
+  padding: 10px;
+}
+
+h3 {
+  font-size: 20px;
+  padding: 15px;
+}
+
+input {
+  padding: 15px;
+  border: 2px solid #c9e9f6;
+  border-radius: 10px;
+  margin-top: 15px;
+  width: 300px;
+}
+
+
+input:focus{
+  outline: none;
+}
+
+#submitButton {
+  justify-content: center;
+  background-color: #c9e9f6 ;
+  color: black;
+  font-size: 30px;
+  width: 125px;
+  height: 55px;
+  border-radius: 30px;
+  border: #007ea7 solid 2px;
+  cursor: pointer;
+  margin-top: 70px;
+}
+
+#highscore {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+#resetGame, #resetScore {
+  justify-content: center;
+  background-color: #c9e9f6 ;
+  color: black;
+  font-size: 30px;
+  width: 125px;
+  height: 55px;
+  border-radius: 30px;
+  border: #007ea7 solid 2px;
+  cursor: pointer;
+  margin-top: 70px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
 
 footer {
   background-color: #007ea7;
@@ -151,8 +225,4 @@ h4 {
 #connect {
 text-align: center;
 color: #f1f1f1;
-}
-
-.hide {
-  display: none;
 }

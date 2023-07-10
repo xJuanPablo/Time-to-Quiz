@@ -13,7 +13,7 @@ To use webpage, open internet application of choice and type https://xjuanpablo.
 
 ## Screenshot
 
-![Alt text](./assets/photos/screencapture-127-0-0-1-5500-index-html-2023-07-08-19_31_43.png)
+![Alt text](./assets/photos/screen.pdf)
 
 ## Credits
 
